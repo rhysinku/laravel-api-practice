@@ -23,6 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::group(['prefix'=> 'v1/'], function() {
     
     Route::apiResource('comment', CommentController::class);
-    Route::get('test/comment/{comment}', [CommentController::class, 'demo']);
+    Route::get('test/comment/', [CommentController::class, 'demo']);
+    // Route::get('test/comment/{commentId}', [CommentController::class, 'demo']);
     
 });

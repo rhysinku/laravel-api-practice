@@ -2,11 +2,10 @@
 
 namespace App\Http\Resources;
 
-
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class CommentResource extends JsonResource
+class ReplyResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,13 +14,12 @@ class CommentResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+        // return parent::toArray($request);
         return [
             'id' => $this->id,
-            'parentCommentId'=>$this->parent_comment_id,
+            'parentCommentId'=>$this->comment_id,
             'name' => $this->name,
-            'comment' => $this->comment_data,
-            'replies' => ReplyResource::collection($this->whenLoaded('replies')),
+            'commentReply' => $this->comment_data,
         ];
-        
     }
 }
